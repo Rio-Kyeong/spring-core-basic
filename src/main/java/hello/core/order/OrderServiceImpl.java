@@ -1,15 +1,10 @@
 package hello.core.order;
 
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
-import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
-
-
 
     // 구현 클래스에 의존하지 말고, 인터페이스에 의존해야 좋은 객체 지향 설계가 된다. -> DIP
     // 하지만 순수 자바 언어를 사용한 이 코드에서는 인터페이스와 클래스 모두에게 의존하고 있다.
@@ -32,5 +27,10 @@ public class OrderServiceImpl implements OrderService{
         int discountPrice = discountPolicy.discount(member, itemPrice);
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
+
+    //테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }

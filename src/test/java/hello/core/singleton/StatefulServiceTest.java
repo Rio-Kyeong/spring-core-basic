@@ -18,7 +18,7 @@ public class StatefulServiceTest {
         // ThreadA: A사용자 10000원 주문
         statefulService1.order("UserA", 10000);
         // ThreadB: B사용자 20000원 주문
-        statefulService1.order("UserB", 20000);
+        statefulService2.order("UserB", 20000);
 
         // ThreadA: A사용자 주문 금액 조회
         int price = statefulService1.getPrice();
@@ -35,5 +35,4 @@ public class StatefulServiceTest {
             return new StatefulService();
         }
     }
-
 }
